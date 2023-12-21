@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<head>
+<style>
+h1 {color: blueviolet;}
+ul {color: brown;}
+</style>
+</head>
+<body>
+<h1>Things I wanna do b4 2024</h1>
+<ul>
+{% for todo in my_todos %}
+    <li>{{todo}}</li>
+{% endfor %}
+</ul>
+<form method="post">
+<input name="new_todo">
+<input type="Submit">
+</form>
+</body>
+</html>
