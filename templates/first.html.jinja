@@ -4,15 +4,22 @@
 <head>
 <style>
 h1 {color: blueviolet;}
+h1 {text-align: center;}
 ul {color: brown;}
+ul {text-align: center;}
 </style>
 </head>
 <body>
 <h1>Things I wanna do b4 2024</h1>
 <ul>
-{% for todo in my_todos %}
-    <li>{{todo}}</li>
-{% endfor %}
+    {% for todo in my_todos %}
+        <li>
+            {{todo}}
+            <form method="POST" action="/delete_todo/{{loop.index0}}">
+            <input type="submit" value="Delete">
+            </form>
+        </li>
+    {% endfor %}
 </ul>
 <form method="post">
 <input name="new_todo">
