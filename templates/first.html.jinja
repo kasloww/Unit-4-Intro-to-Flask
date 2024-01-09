@@ -3,6 +3,7 @@
 <head>
 <head>
 <style>
+background-color 
 h1 {color: blueviolet;}
 h1 {text-align: center;}
 ul {color: brown;}
@@ -14,8 +15,8 @@ ul {text-align: center;}
 <ul>
     {% for todo in my_todos %}
         <li>
-            {{todo}}
-            <form method="POST" action="/delete_todo/{{loop.index0}}">
+            {{ todo ['description'] }}
+            <form method="POST" action="/delete_todo/{{ todo['id'] }}">
             <input type="submit" value="Delete">
             </form>
         </li>
