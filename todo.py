@@ -24,7 +24,7 @@ def index():
 
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * from `todos`")
+    cursor.execute("SELECT * from `todos` ORDER BY `complete`")
 
     results = cursor.fetchall()
 
@@ -38,6 +38,14 @@ todos = ['have fun', 'figure myself out', 'thank god for another year']
 def todo_delete(todo_index):
     cursor = conn.cursor()
     cursor.execute(f"DELETE FROM `todos` WHERE `id` = {todo_index}")
+    cursor.close()
+    conn.commit()
+    return redirect('/')
+
+@app.route("/complete_todo/<int:todo_index>", methods=["POST"])
+def todo_complete(todo_index):
+    cursor = conn.cursor()
+    cursor.execute(f"UPDATE `todos` SET `complete` = 1 WHERE `id` = {todo_index}")
     cursor.close()
     conn.commit()
     return redirect('/')
